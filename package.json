@@ -1,0 +1,15 @@
+{
+  "name": "test-qa-cypress",
+  "version": "1.0.0",
+  "description": "TBD.",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiago Domingos <tiagodomingos09@hotmail.com>",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "cypress": "^13.2.0"
+  }
+}
