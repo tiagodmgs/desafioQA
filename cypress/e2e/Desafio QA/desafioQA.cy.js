@@ -1,5 +1,5 @@
 describe('Desafio QA', () => {
-  const email = 'testemail@hotmail.com';
+  const email = 'testQA123@hotmail.com';
   const password = 'Senha123!@';
   const firstName = 'Test';
   const lastName = 'QA';
@@ -44,24 +44,16 @@ describe('Desafio QA', () => {
     cy.get('#email').type(email);
     cy.get('#pass').type(password);
     cy.get('button.action.login.primary[name="send"]').click();
-
-    // Verificar se ocorreu um erro de login
     cy.get('div[data-bind="html: $parent.prepareMessageForHtml(message.text)"]').should('exist').then(($error) => {
       if ($error.length > 0 && $error.text().includes('Invalid Form Key')) {
-        // Se houver um erro específico, dê um refresh na página e tente fazer login novamente
         cy.log('Login falhou devido a um erro específico. Refresh na página e tentando novamente.');
         cy.reload();
-
-        // Continuar com o restante do teste após o refresh
         cy.contains('Sign In').click();
         cy.get('#email').type(email);
         cy.get('#pass').type(password);
         cy.get('button.action.login.primary[name="send"]').click();
       } else {
-        // Verificar se a saudação de boas-vindas é exibida corretamente
         cy.get('li.greet.welcome').should('exist').invoke('text').should('include', 'Welcome,');
-
-        // Continuar com o restante do teste
         cy.get('li.customer-welcome button.action.switch').first().click();
         cy.contains('li.customer-welcome a', 'My Account').should('be.visible').click();
         cy.contains('h1.page-title', 'My Account').should('exist');
